@@ -1,0 +1,3 @@
+[submodule "lib/patternlock"]
+	path = lib/patternlock
+	url = https://github.com/pagoenka/patternlock
