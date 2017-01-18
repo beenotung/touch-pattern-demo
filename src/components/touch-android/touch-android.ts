@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AndroidFingerprintAuth} from "ionic-native";
 
 /*
   Generated class for the TouchAndroid component.
@@ -12,11 +13,37 @@ import { Component } from '@angular/core';
 })
 export class TouchAndroidComponent {
 
-  text: string;
 
   constructor() {
     console.log('Hello TouchAndroid Component');
-    this.text = 'Hello World';
+
+    var encryptConfig = {
+      clientId: "myAppName",
+      username: "currentUser",
+      password: "currentUserPassword"
+    };
+
+
+    // FingerprintAuth.encrypt(encryptConfig, successCallback, errorCallback);
+    //
+    // function successCallback(result) {
+    //   console.log("successCallback(): " + JSON.stringify(result));
+    //   if (result.withFingerprint) {
+    //     console.log("Successfully encrypted credentials.");
+    //     console.log("Encrypted credentials: " + result.token);
+    //   } else if (result.withBackup) {
+    //     console.log("Authenticated with backup password");
+    //   }
+    // }
+    //
+    // function errorCallback(error) {
+    //   if (error === "Cancelled") {
+    //     console.log("FingerprintAuth Dialog Cancelled!");
+    //   } else {
+    //     console.log("FingerprintAuth Error: " + error);
+    //   }
+    // }
+
   }
 
 }

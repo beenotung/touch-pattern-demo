@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, Platform} from 'ionic-angular';
+import {TouchID, AndroidFingerprintAuth} from "ionic-native";
 import {PatternLockComponent} from "../../components/pattern-lock/pattern-lock";
-import {TouchID} from "ionic-native";
 
 /*
  Generated class for the Login page.
@@ -24,7 +24,19 @@ export class LoginPage {
   }
 
   showTouchAndroid(): boolean {
-    return this.platform.is('android');
+    if (this.platform.is('cordova')) {
+      if (this.platform.is('android')) {
+        AndroidFingerprintAuth.isAvailable().then(res => {
+          console.log('is android touch supported', res);
+          this.showTouchAndroid = () => res.isAvailable;
+        }).catch(err => {
+          console.error('android touch is not supported', err);
+          this.showTouchAndroid = () => false;
+        });
+      }
+      return this.platform.is('android');
+    } else
+      return false;
   }
 
   showTouchIOS(): boolean {
@@ -43,7 +55,6 @@ export class LoginPage {
   }
 
   showPattern(): boolean {
-    // return true;
     return !(this.showTouchAndroid() || this.showTouchIOS());
   }
 }
