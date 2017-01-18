@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AndroidFingerprintAuth} from "ionic-native";
 
-/*
-  Generated class for the TouchAndroid component.
+declare var FingerprintAuth: any;
 
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
-*/
+/*
+ Generated class for the TouchAndroid component.
+
+ See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+ for more info on Angular 2 Components.
+ */
 @Component({
   selector: 'touch-android',
   templateUrl: 'touch-android.html'
@@ -22,27 +24,28 @@ export class TouchAndroidComponent {
       username: "currentUser",
       password: "currentUserPassword"
     };
+    console.log('plugin', FingerprintAuth);
 
+    FingerprintAuth.encrypt(encryptConfig, successCallback, errorCallback);
 
-    // FingerprintAuth.encrypt(encryptConfig, successCallback, errorCallback);
-    //
-    // function successCallback(result) {
-    //   console.log("successCallback(): " + JSON.stringify(result));
-    //   if (result.withFingerprint) {
-    //     console.log("Successfully encrypted credentials.");
-    //     console.log("Encrypted credentials: " + result.token);
-    //   } else if (result.withBackup) {
-    //     console.log("Authenticated with backup password");
-    //   }
-    // }
-    //
-    // function errorCallback(error) {
-    //   if (error === "Cancelled") {
-    //     console.log("FingerprintAuth Dialog Cancelled!");
-    //   } else {
-    //     console.log("FingerprintAuth Error: " + error);
-    //   }
-    // }
+    // let alert=console.log;
+    function successCallback(result) {
+      alert("successCallback(): " + JSON.stringify(result));
+      if (result.withFingerprint) {
+        alert("Successfully encrypted credentials.");
+        alert("Encrypted credentials: " + result.token);
+      } else if (result.withBackup) {
+        alert("Authenticated with backup password");
+      }
+    }
+
+    function errorCallback(error) {
+      if (error === "Cancelled") {
+        alert("FingerprintAuth Dialog Cancelled!");
+      } else {
+        alert("FingerprintAuth Error: " + error);
+      }
+    }
 
   }
 
