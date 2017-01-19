@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AndroidFingerprintAuth} from "ionic-native";
+import {AlertController, Platform} from "ionic-angular";
 
 declare var FingerprintAuth: any;
 
@@ -16,7 +17,8 @@ declare var FingerprintAuth: any;
 export class TouchAndroidComponent {
 
 
-  constructor() {
+  constructor(private alertCtrl: AlertController
+    , private platform: Platform) {
     console.log('Hello TouchAndroid Component');
 
     var encryptConfig = {
@@ -24,9 +26,15 @@ export class TouchAndroidComponent {
       username: "currentUser",
       password: "currentUserPassword"
     };
-    console.log('plugin', FingerprintAuth);
 
-    FingerprintAuth.encrypt(encryptConfig, successCallback, errorCallback);
+    platform.ready().then(() => {
+      if (typeof FingerprintAuth !== "undefined") {
+        console.log('plugin', FingerprintAuth);
+        FingerprintAuth.encrypt(encryptConfig, successCallback, errorCallback);
+      } else {
+        errorCallback("FingerprintAuth is not defined")
+      }
+    });
 
     // let alert=console.log;
     function successCallback(result) {
@@ -43,7 +51,11 @@ export class TouchAndroidComponent {
       if (error === "Cancelled") {
         alert("FingerprintAuth Dialog Cancelled!");
       } else {
-        alert("FingerprintAuth Error: " + error);
+        alertCtrl.create({
+          title: 'Touch Not Supported'
+          , message: 'Please use pattern lock instead'
+          , buttons: ['Dismiss']
+        }).present();
       }
     }
 
