@@ -1,5 +1,10 @@
 #!/bin/bash
 # npm i -g ionic cordova  ## if not installed
+res=$(git submodule)
+if [ $? != 0 ]; then
+  echo "Error: please make sure this is a git repo"
+  exit 1
+fi
 npm install
 git submodule update --init
 mkdir www
