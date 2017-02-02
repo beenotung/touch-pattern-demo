@@ -1,8 +1,12 @@
 #!/bin/bash
 ## clean up for external archive (e.g. create zip for email)
 ## not required before commit (ignored by git already)
+git submodule deinit --all
 rm -rf node_modules/
 rm -rf platforms/
 rm -rf resources/android/
 rm -rf resources/ios/
 rm -rf www/
+rm -rf plugins/
+cd .git
+ls | grep -v config | xargs rm -rf
