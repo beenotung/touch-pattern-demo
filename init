@@ -1,2 +1,6 @@
 #!/bin/bash
+# npm i -g ionic cordova  ## if not installed
 npm install
+git submodule update --init
+mkdir www
+ionic plugin reset

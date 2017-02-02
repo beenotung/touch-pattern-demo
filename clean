@@ -1,0 +1,8 @@
+#!/bin/bash
+## clean up for external archive (e.g. create zip for email)
+## not required before commit (ignored by git already)
+rm -rf node_modules/
+rm -rf platforms/
+rm -rf resources/android/
+rm -rf resources/ios/
+rm -rf www/
