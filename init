@@ -1,11 +1,13 @@
 #!/bin/bash
-# npm i -g ionic cordova  ## if not installed
 res=$(git submodule)
 if [ $? != 0 ]; then
   echo "Error: please make sure this is a git repo"
   exit 1
 fi
-npm install
 git submodule update --init
 mkdir www
+hash yarn 2>/dev/null || npm i -g yarn
+hash ionic 2>/dev/null || yarn global add ionic
+hash cordova 2>/dev/null || yarn global add cordova
+yarn install
 ionic plugin reset

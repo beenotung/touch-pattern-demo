@@ -1,4 +1,5 @@
 #!/bin/bash
+./auto-init
 adb devices                 ## to make sure adb deamon is running
 if [ ! -d "resources/android" ]; then
   ionic platform add android
