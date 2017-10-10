@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AndroidFingerprintAuth} from "ionic-native";
+// import {AndroidFingerprintAuth} from "ionic-native";
 import {AlertController, Platform} from "ionic-angular";
 
 declare var FingerprintAuth: any;

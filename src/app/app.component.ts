@@ -3,8 +3,6 @@ import {Nav, Platform} from 'ionic-angular';
 import {StatusBar, Splashscreen} from 'ionic-native';
 
 import {LoginPage} from "../pages/login/login";
-import {PatternPage} from "../pages/pattern/pattern";
-import {TouchPage} from "../pages/touch/touch";
 import {Comm} from "../providers/comm";
 
 
