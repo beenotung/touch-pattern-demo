@@ -2,7 +2,7 @@
 ./auto-init
 adb devices                 ## to make sure adb deamon is running
 if [ ! -d "resources/android" ]; then
-  ionic platform add android
-  ionic resources
+  ionic cordova platform add android
+  ionic cordova resources
 fi
-ionic run android
+ionic cordova run android
